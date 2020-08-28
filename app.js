@@ -1,31 +1,33 @@
 //clock//
 const clock = document.querySelector('.clock');
 
-const tick = () => {
+const tickingClock = () => {
 const now = new Date();
-const h = now.getHours();
-const m = now.getMinutes();
-const s = now.getSeconds();
+const hours = now.getHours();
+const minutes = now.getMinutes();
+const seconds = now.getSeconds();
 const html = `
-<span>${leadingZero(h)}</span> :
-<span>${leadingZero(m)}</span> :
-<span>${leadingZero(s)}</span>
+<span>${leadingZero(hours)}</span> :
+<span>${leadingZero(minutes)}</span> :
+<span>${leadingZero(seconds)}</span>
 `;
 
 clock.innerHTML = html;
 };
-setInterval(tick, 1000);
+setInterval(tickingClock, 1000);
 
-const leadingZero = s => {
-if (s < 10) {
+const leadingZero = singleDigit => {
+if (singleDigit < 10) {
 return "0" + String(s);
 } else {
-return s;
+return singleDigit;
 }
 };
 
 //add user's name to website//
-document.querySelector("#show-name").addEventListener("click", function showName() {
+const showname = document.querySelector("#show-name");
+
+showname.addEventListener("click", function showName() {
 const userName = document.querySelector("#enter-name").value; 
     
     document.querySelector( 
@@ -49,6 +51,7 @@ balloons.addEventListener("dblclick",function hideBalloonText() {
 });
 
 const sophie = document.querySelector(".sophie-roe-pic");
+
 sophie.addEventListener("click",function showSophie() { 
     element = document.querySelector('.sophie-roe-img-text'); 
     element.style.display = 'block'; 
@@ -60,17 +63,20 @@ sophie.addEventListener("dblclick",function hideSophie() {
 });
 
 //scroll//
-document.querySelector(".ayellow-text").addEventListener("scroll",function scrollMakesTextYellow() { 
-    document.querySelector('.ayellow-text').style.color = "yellow";
+
+const ayellowtext = document.querySelector(".ayellow-text");
+ayellowtext.addEventListener("scroll",function scrollMakesTextYellow() { 
+ayellowtext.style.color = "yellow";
 });
 
-
-document.querySelector(".byellow-text").addEventListener("scroll",function scrollMakesTextYellow() { 
-    document.querySelector('.byellow-text').style.color = "yellow";
+const byellowtext = document.querySelector(".byellow-text");
+byellowtext.addEventListener("scroll",function scrollMakesTextYellow() { 
+byellowtext.style.color = "yellow";
 });
 
 //balloon move//
 const balloon = document.querySelector("#balloonmovebutton");
+
 balloon.addEventListener("click",function move() { 
     element = document.querySelector('.balloon'); 
     element.style.display = 'block'; 
@@ -84,13 +90,14 @@ balloon.addEventListener("dblclick",function stop() {
 //copyright//
 
 const copy = document.querySelector('.copy-right');
+
 copy.addEventListener('copy', () => {
  alert('my content is copyright!');
 })
 
 //background slider//
 
-var slide_index = 1;  
+let slide_index = 1;  
         displaySlides(slide_index);  
   
         function nextSlide(n) {  
@@ -102,8 +109,8 @@ var slide_index = 1;
         }  
   
         function displaySlides(n) {  
-            var i;  
-            var slides = document.getElementsByClassName("showSlide");  
+            let i;  
+            let slides = document.getElementsByClassName("showSlide");  
             if (n > slides.length) { slide_index = 1 }  
             if (n < 1) { slide_index = slides.length }  
             for (i = 0; i < slides.length; i++) {  
