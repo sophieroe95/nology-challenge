@@ -18,7 +18,7 @@ setInterval(tickingClock, 1000);
 
 const leadingZero = singleDigit => {
 if (singleDigit < 10) {
-return "0" + String(s);
+return "0" + String(singleDigit);
 } else {
 return singleDigit;
 }
